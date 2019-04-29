@@ -37,31 +37,7 @@
                 <RotateTransform Angle="0" />
             </TextBlock.LayoutTransform>
         </TextBlock>
-        <Slider x:Name="rudderSlider" Minimum="-1" Maximum="1" 
-        TickFrequency="0.1" TickPlacement="BottomRight" VerticalAlignment="Bottom" Height="69" Grid.Column="2" Grid.Row="2"
-        Value="{Binding Rudder, Mode=OneWayToSource}" Margin="144,0,385,22" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
-            <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.006"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Slider.RenderTransform>
-        </Slider>
-
-        <Slider x:Name="throttleSlider"  Minimum="-1" Maximum="1" 
-        TickFrequency="0.1" TickPlacement="BottomRight" Orientation="Vertical" Grid.Column="2" Grid.RowSpan="3" Grid.Row="0" Margin="58,123,712,52"
-        Value="{Binding Throttle, Mode=OneWayToSource}" RenderTransformOrigin="0.5,0.5">
-            <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="2.065"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="-1.695"/>
-                </TransformGroup>
-            </Slider.RenderTransform>
-        </Slider>
+        
         <Canvas  x:Name="Base" Margin="127,105,375,35" Grid.RowSpan="3" Grid.Column="2">
             <Ellipse HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
                 <Ellipse.Fill>
@@ -190,6 +166,32 @@
                 </Canvas.Resources>
             </Canvas>
         </Canvas>
+
+        <Slider x:Name="rudderSlider" Minimum="-1" Maximum="1" 
+        TickFrequency="0.1" TickPlacement="BottomRight" VerticalAlignment="Bottom" Height="69" Grid.Column="2" Grid.Row="2"
+        Value="{Binding Rudder, Mode=OneWayToSource}" Margin="144,0,385,22" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.006"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+
+        <Slider x:Name="throttleSlider"  Minimum="-1" Maximum="1" 
+        TickFrequency="0.1" TickPlacement="BottomRight" Orientation="Vertical" Grid.Column="2" Grid.RowSpan="3" Grid.Row="0" Margin="58,123,712,52"
+        Value="{Binding Throttle, Mode=OneWayToSource}" RenderTransformOrigin="0.5,0.5">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="2.065"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-1.695"/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
         <TextBlock Text="{Binding ElementName=rudderSlider,StringFormat=N1,Path=Value}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="2" Margin="489,92,0,0" Grid.Row="2" Cursor="None" Width="53" RenderTransformOrigin="0.406,-1.906" Height="26" FontSize="20"/>
         <TextBlock Text="{Binding ElementName=throttleSlider,StringFormat=N1,Path=Value}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="2" Margin="82,90,0,0" Grid.Row="1" Cursor="None" Width="54" RenderTransformOrigin="0.406,-1.906" Height="26" FontSize="20"/>
         <TextBlock x:Name="elevatorValue" Text="{Binding Path=Elevator,StringFormat=N1}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="2" Margin="540,94,0,0" Grid.Row="1" Cursor="None" Width="76" RenderTransformOrigin="0.406,-1.906" Height="26" FontSize="20" >

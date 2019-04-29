@@ -37,6 +37,7 @@ namespace FlightSimulator.ViewModels
             }
         }
         private bool isTyping;
+        //the property indicates whether or not the user is currently typing somethind in the textbox
         public bool IsTyping
         {
             get

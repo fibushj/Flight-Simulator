@@ -31,8 +31,7 @@ namespace FlightSimulator.Model.Interface
 
         public void EstablishConnection()
         {
-            /* getting the information of the port from the singleton instance of 
-             ApllicationSettingsModel that was provided to us  */         
+               
             int port = ApplicationSettingsModel.Instance.FlightInfoPort;
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             listener = new TcpListener(ep);
@@ -52,7 +51,7 @@ namespace FlightSimulator.Model.Interface
         }
       
         /* In our case, the method returns a double array which contains 2 values - lon and lat - received
-         from the simulator*/
+         from the simulator */
         public double[] Read()
         {
             Byte[] bytes = new byte[client.ReceiveBufferSize];
@@ -62,7 +61,7 @@ namespace FlightSimulator.Model.Interface
             if (message.Contains(","))
             {
                 /* There's no need for doing extra splitting (more that 3 substrings) since lon and lat are the
-                 * first values that appear in the string. Delimiting by ' */
+                 * first values that appear in the string. Delimiting by comma */
                 string[] splittedSubstrings = message.Split(new[] { ',' }, 3, StringSplitOptions.None);
                 returnedValues[0] = double.Parse(splittedSubstrings[0]);
                 returnedValues[1] = double.Parse(splittedSubstrings[1]);

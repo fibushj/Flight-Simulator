@@ -30,15 +30,15 @@ namespace FlightSimulator.Views
             InitializeComponent();
             vm = new AutoPilotViewModel(new AutoPilotModel());
             DataContext = vm;
+            //this is the exact color from the instructions
             customLightRed = (Brush)new BrushConverter().ConvertFrom("#FFB6C1");
 
             vm.PropertyChanged += delegate (object sender, System.ComponentModel.PropertyChangedEventArgs e)
              {
+                 /* if the user is typing, that means that the text has been changed, thus the background should 
+                  * change to light red, otherwise it should be white */
                  if (e.PropertyName.Equals("IsTyping"))
-                 {
-                     /* if the user is typing, that means that the text has been changed, thus the background should 
-                      * change to light red */
-
+                 {                     
                      if (vm.IsTyping)
                      {
                          textBox.Background = customLightRed;

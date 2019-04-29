@@ -26,6 +26,17 @@ namespace FlightSimulator.ViewModels
             get { return model.Lat; }
         }
 
+       
+
+        public FlightBoardViewModel(FlightBoardModel model)
+        {
+            this.model = model;
+            model.PropertyChanged += delegate (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged(e.PropertyName);
+            };
+        }
+
         private ICommand connectCommand;
 
         public ICommand ConnectCommand
@@ -36,16 +47,17 @@ namespace FlightSimulator.ViewModels
             }
         }
 
-
-
         private Thread t = null;
         private void OnConnectClick()
         {
+            //running the info channel in a new thread
             t = new Thread(() =>
               {
+                  //the purpose of this boolean is explained in Joystick.xaml.cs
                   stop = false;
                   model.StartInfoChannel();
                   model.StartCommandsChannel();
+                  //now that both channels were established, treating the data received from the simulator
                   model.TreatReceivedData();
               });
             t.Start();            
@@ -64,6 +76,7 @@ namespace FlightSimulator.ViewModels
         private void OnDisconnectClick()
         {
             stop = true;
+            //gracefully closing the connection and the info channel thread
             model.Stop();
             if (t.IsAlive)
             {
@@ -78,14 +91,7 @@ namespace FlightSimulator.ViewModels
         }
 
         public Boolean ShouldStop() { return stop; }
-        public FlightBoardViewModel(FlightBoardModel model)
-        {
-            this.model = model;
-            model.PropertyChanged += delegate (object sender, System.ComponentModel.PropertyChangedEventArgs e)
-            {
-                NotifyPropertyChanged(e.PropertyName);
-            };
-        }
+        
 
 
         private ICommand settingsCommand;

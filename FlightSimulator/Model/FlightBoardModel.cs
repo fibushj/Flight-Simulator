@@ -10,6 +10,7 @@ namespace FlightSimulator.Model
 {
     public class FlightBoardModel : BaseNotify
     {
+        //a boolean which becomes true when the Disconnect button is pressed
         volatile Boolean stop = false;
         ITCPServer server;
         ITCPClient client;
@@ -40,6 +41,7 @@ namespace FlightSimulator.Model
        public void StartInfoChannel()
         {
             server = MyTCPServer.Instance;
+            //setting it yet again to false in case disconnect is pressed, and then connect again
             stop = false;
             server.EstablishConnection();
         }
@@ -56,6 +58,7 @@ namespace FlightSimulator.Model
             while (!stop)
             {
                 values = server.Read();
+                //those are the respective place of Lon and Lat according to generic_small.xml
                 Lon = values[0];
                 Lat = values[1];
             }

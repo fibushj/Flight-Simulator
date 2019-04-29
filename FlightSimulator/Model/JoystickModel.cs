@@ -18,6 +18,7 @@ namespace FlightSimulator.Model
         public void SendValue(string property, double value)
         {
             string message;
+            //sending the following messages according to the format the simulator expects
             if (property.Equals("Rudder"))
             {
                 message = "set /controls/flight/rudder ";

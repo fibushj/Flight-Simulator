@@ -47,7 +47,9 @@ namespace FlightSimulator.Views
         private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             /* there's no need to enter the if statement when the property changed is Lon, since both are always 
-             * updated one after the other, thus resulting in drawing the same point twice */
+             * updated one after the other, thus resulting in drawing the same point twice (and it's problematic 
+             * in the case of the first point, when Lat is automatically initialized to be zero and hasn't been
+             * updated yet with its real value */
             if(e.PropertyName.Equals("Lat"))
             {
                 Point p1 = new Point(vm.Lat, vm.Lon);

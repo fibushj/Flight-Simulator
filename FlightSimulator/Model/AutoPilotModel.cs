@@ -11,6 +11,7 @@ namespace FlightSimulator.Model
     public class AutoPilotModel
     {
         private ITCPClient client;
+
         public AutoPilotModel() {
             client = MyTCPClient.Instance;
 
@@ -18,6 +19,7 @@ namespace FlightSimulator.Model
 
         public void Send(string commands)
         {
+            //splitting the commands by newline character
             string[] commandsArray = commands.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
             new Thread(delegate ()
             {

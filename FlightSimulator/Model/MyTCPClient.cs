@@ -31,6 +31,8 @@ namespace FlightSimulator.Model
         #endregion
         public void Connect()
         {
+            /* getting the information of the IP address and port from the singleton instance of 
+             ApllicationSettingsModel that was provided to us  */
             string ip = ApplicationSettingsModel.Instance.FlightServerIP;
             int port = ApplicationSettingsModel.Instance.FlightCommandPort;
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
@@ -52,6 +54,7 @@ namespace FlightSimulator.Model
             {
                 writer.WriteLine(message);
                 Debug.WriteLine("the command: " + message + " was delivered successfully");
+                //forcing the writer to send the message immediately
                 writer.Flush();
             }
             else

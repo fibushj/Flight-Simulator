@@ -182,7 +182,8 @@ namespace FlightSimulator.Views
             {
                 vm.Rudder = value;
             }
-        }public double Throttle
+        }
+        public double Throttle
         {
             set
             {

@@ -1,0 +1,33 @@
+﻿<Window x:Class="FlightSimulator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightSimulator"
+        xmlns:views="clr-namespace:FlightSimulator.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="594" Width="1131" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="485*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <views:FlightBoard Grid.Column="0" Margin="0,-80,24,-114" Grid.RowSpan="2" Width="538"/>
+        <TabControl Grid.Row="1" Margin="504,10,10,0" Grid.ColumnSpan="2">
+
+            <TabItem Header="Manual">
+                <views:Joystick Margin="-262,-40,-241,0" Width="1108"></views:Joystick>
+            </TabItem>
+            <TabItem Header="Auto Pilot">
+                <views:AutoPilot Width="Auto" Margin="0,0,-9,0"></views:AutoPilot>
+            </TabItem>
+        </TabControl>
+
+
+
+    </Grid>
+</Window>

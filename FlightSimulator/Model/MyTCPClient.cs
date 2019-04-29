@@ -1,6 +1,7 @@
 ﻿using FlightSimulator.Model.Interface;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -36,7 +37,7 @@ namespace FlightSimulator.Model
             client = new TcpClient();
             client.Connect(ep);
             writer = new StreamWriter(client.GetStream());
-            Console.WriteLine("Commands channel established");
+            Debug.WriteLine("Commands channel established");
         }
 
         public void Disconnect()
@@ -50,12 +51,12 @@ namespace FlightSimulator.Model
             if (writer != null)
             {
                 writer.WriteLine(message);
-                Console.WriteLine("the command: " + message + " was delivered successfully");
+                Debug.WriteLine("the command: " + message + " was delivered successfully");
                 writer.Flush();
             }
             else
             {
-                Console.WriteLine("Commands channel hasn't yet been established, please wait");
+                Debug.WriteLine("Commands channel hasn't yet been established, please wait");
             }
 
         }

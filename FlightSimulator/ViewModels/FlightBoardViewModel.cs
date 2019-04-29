@@ -2,6 +2,7 @@
 using FlightSimulator.Model.Interface;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -71,9 +72,9 @@ namespace FlightSimulator.ViewModels
                     t.Join();
                 }
             }
-            Console.WriteLine("The thread of info channel has successfully finished");
+            Debug.WriteLine("The thread of info channel has successfully finished");
             model.Disconnect();
-            Console.WriteLine("Successfully disconnected both channels");
+            Debug.WriteLine("Successfully disconnected both channels");
         }
 
         public Boolean ShouldStop() { return stop; }

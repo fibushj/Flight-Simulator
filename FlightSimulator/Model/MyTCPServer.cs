@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -35,11 +36,11 @@ namespace FlightSimulator.Model.Interface
             int port = ApplicationSettingsModel.Instance.FlightInfoPort;
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             listener = new TcpListener(ep);
-            Console.WriteLine("Info channel established");
+            Debug.WriteLine("Info channel established");
             listener.Start();
             client = listener.AcceptTcpClient();
             stream = client.GetStream();
-            Console.WriteLine("Simulator connected");
+            Debug.WriteLine("Simulator connected");
 
         }
 
